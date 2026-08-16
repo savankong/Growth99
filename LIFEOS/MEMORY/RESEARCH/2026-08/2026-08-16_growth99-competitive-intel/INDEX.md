@@ -7,7 +7,10 @@
 
 Read this file top to bottom to reconstruct the full state of this research.
 
-**Published dossier (single-page, styled):** https://claude.ai/code/artifact/7319385a-519d-4720-bcc7-b56ada0ac516 — also mirrored in this repo at [`dossier/growth99-analysis.html`](../../../../../dossier/growth99-analysis.html).
+**Published dossier (single-page, styled):**
+- Claude artifact (private, shareable): https://claude.ai/code/artifact/7319385a-519d-4720-bcc7-b56ada0ac516
+- Live on DigitalOcean App Platform: https://growth99-competitive-dossier-hpxrg.ondigitalocean.app/
+- Source in this repo: [`dossier/growth99-analysis.html`](../../../../../dossier/growth99-analysis.html)
 
 ## Start Here
 
