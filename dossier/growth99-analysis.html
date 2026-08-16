@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Growth99 Analysis</title>
+<style>
+  :root {
+    --paper: #ebe3d3;
+    --paper-raised: #f4eee1;
+    --ink: #2a2419;
+    --ink-soft: #6b6048;
+    --ink-faint: #948a6d;
+    --accent: #a8461f;
+    --accent-deep: #7a3117;
+    --line: #c7bb9c;
+    --line-strong: #ab9d78;
+    --good: #3f6b45;
+    --good-bg: #dde6d5;
+    --warn: #93691c;
+    --warn-bg: #ecdfc0;
+    --critical: #8c3c34;
+    --critical-bg: #e8d5cf;
+    --shadow: rgba(42, 36, 25, 0.14);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #1b1712;
+      --paper-raised: #241f18;
+      --ink: #e8dfcb;
+      --ink-soft: #b3a888;
+      --ink-faint: #7d735a;
+      --accent: #d97a46;
+      --accent-deep: #eb9868;
+      --line: #3c3527;
+      --line-strong: #52493334;
+      --good: #7fb27f;
+      --good-bg: #26362a;
+      --warn: #d1ab5c;
+      --warn-bg: #362e1c;
+      --critical: #d68f83;
+      --critical-bg: #392424;
+      --shadow: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #1b1712;
+    --paper-raised: #241f18;
+    --ink: #e8dfcb;
+    --ink-soft: #b3a888;
+    --ink-faint: #7d735a;
+    --accent: #d97a46;
+    --accent-deep: #eb9868;
+    --line: #3c3527;
+    --line-strong: #524933;
+    --good: #7fb27f;
+    --good-bg: #26362a;
+    --warn: #d1ab5c;
+    --warn-bg: #362e1c;
+    --critical: #d68f83;
+    --critical-bg: #392424;
+    --shadow: rgba(0, 0, 0, 0.4);
+  }
+
+  * { box-sizing: border-box; }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", ui-serif, serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: var(--paper-raised); }
+  a { color: var(--accent-deep); }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .mono {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  p { max-width: 40rem; }
+  .wide-note { max-width: none; }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    border-bottom: 3px solid var(--ink);
+    padding: 3.2rem 2rem 2.4rem;
+    background: var(--paper);
+  }
+  .cover-inner { max-width: 74rem; margin: 0 auto; }
+  .cover-label {
+    display: inline-block;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--paper-raised);
+    padding: 0.3rem 0.7rem;
+    border-radius: 2px;
+    transform: rotate(-1deg);
+    margin-bottom: 1.3rem;
+  }
+  .cover h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0 0 0.9rem;
+  }
+  .dek {
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 46rem;
+    margin: 0 0 1.8rem;
+  }
+  .cover-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 2rem;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    margin: 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+  }
+  .cover-meta div { display: flex; flex-direction: column; gap: 0.15rem; }
+  .cover-meta dt { color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.68rem; }
+  .cover-meta dd { margin: 0; color: var(--ink); }
+  .cover-meta .gate-pass { color: var(--good); font-weight: 600; }
+  .cover-meta .gate-partial { color: var(--warn); font-weight: 600; }
+
+  /* ---------- Shell ---------- */
+  .shell {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    max-width: 74rem;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.2rem 2rem 2rem;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.82rem;
+  }
+  nav.toc h2 {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 1.4rem 0 0.5rem;
+    font-weight: 600;
+  }
+  nav.toc h2:first-child { margin-top: 0; }
+  nav.toc ul { list-style: none; margin: 0; padding: 0; }
+  nav.toc li { margin: 0.15rem 0; }
+  nav.toc a {
+    display: block;
+    padding: 0.2rem 0.5rem;
+    margin-left: -0.5rem;
+    border-left: 2px solid transparent;
+    text-decoration: none;
+    color: var(--ink-soft);
+    border-radius: 0 2px 2px 0;
+  }
+  nav.toc a:hover { border-left-color: var(--line-strong); color: var(--ink); background: var(--paper-raised); }
+  nav.toc a.priority { color: var(--accent-deep); font-weight: 600; }
+
+  main { min-width: 0; padding: 2.4rem 2rem 4rem; }
+  section { margin-bottom: 3.2rem; }
+  section > h2.section-title {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 0.5rem;
+    margin: 0 0 1.4rem;
+  }
+  section > .section-sub {
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-top: -0.9rem;
+    margin-bottom: 1.6rem;
+    max-width: 42rem;
+  }
+
+  h3.entry-title { font-family: inherit; font-size: 1.5rem; font-weight: 600; margin: 0; }
+  h4 { font-family: inherit; font-size: 0.98rem; font-weight: 600; margin: 1.2rem 0 0.4rem; }
+
+  /* ---------- Cards ---------- */
+  .card {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1.6rem 1.8rem 1.8rem;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 1px 0 var(--shadow);
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 1rem;
+  }
+  .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 0.8rem 1.2rem;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 0.9rem 0;
+    margin: 1rem 0;
+  }
+  .stat-row dt {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.15rem;
+  }
+  .stat-row dd {
+    margin: 0;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.88rem;
+    color: var(--ink);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.2rem;
+  }
+  .grid-2 .card { margin-bottom: 0; }
+
+  .source-list {
+    margin-top: 1.2rem;
+    padding-top: 0.8rem;
+    border-top: 1px dashed var(--line);
+  }
+  .source-list summary {
+    cursor: pointer;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .source-list ul { margin: 0.6rem 0 0; padding-left: 1.2rem; font-size: 0.88rem; }
+  .source-list li { margin-bottom: 0.3rem; }
+
+  /* ---------- Chips & stamps ---------- */
+  .chip {
+    display: inline-block;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    padding: 0.08rem 0.4rem;
+    white-space: nowrap;
+  }
+  .chip-high { background: var(--good-bg); color: var(--good); }
+  .chip-med { background: var(--warn-bg); color: var(--warn); }
+  .chip-conflict { background: var(--critical-bg); color: var(--critical); }
+  .chip-na { background: var(--paper); color: var(--ink-faint); border: 1px solid var(--line); }
+
+  .stamp {
+    display: inline-block;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1.5px solid currentColor;
+    border-radius: 3px;
+    padding: 0.2rem 0.55rem;
+    transform: rotate(-2deg);
+  }
+  .stamp-critical { color: var(--accent); }
+  .stamp-high { color: var(--good); }
+  .stamp-open { color: var(--critical); }
+
+  /* ---------- Spotlight sections ---------- */
+  .spotlight {
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    padding: 1.6rem 1.8rem;
+    background: var(--paper-raised);
+    margin-bottom: 1.4rem;
+  }
+  .spotlight .stamp { margin-bottom: 0.8rem; }
+
+  /* ---------- Tables ---------- */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 3px; margin: 1.2rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.86rem; min-width: 560px; }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 0.6rem 0.9rem 0;
+  }
+  thead th {
+    background: var(--paper);
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--ink-soft);
+    border-bottom: 2px solid var(--ink);
+    padding: 0.6rem 0.9rem;
+  }
+  tbody td { padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--paper); }
+
+  /* ---------- Lists & callouts ---------- */
+  .findings-list { padding-left: 1.4rem; }
+  .findings-list li { margin-bottom: 1rem; max-width: 42rem; }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--paper-raised);
+    padding: 0.9rem 1.2rem;
+    border-radius: 0 3px 3px 0;
+    margin: 1.2rem 0;
+    max-width: 42rem;
+  }
+  .callout.open-question { border-left-color: var(--critical); }
+
+  /* ---------- Footer ---------- */
+  footer.colophon {
+    border-top: 3px solid var(--ink);
+    padding: 1.6rem 2rem 3rem;
+    max-width: 74rem;
+    margin: 0 auto;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+  }
+  footer.colophon a { color: var(--ink-soft); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .shell { display: block; }
+    nav.toc {
+      position: static;
+      max-height: none;
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid var(--line);
+    }
+    nav.toc h2 { display: none; }
+    nav.toc ul { display: flex; gap: 0.8rem; white-space: nowrap; }
+    main { padding: 1.6rem 1.2rem 3rem; }
+    .cover { padding: 2.2rem 1.2rem 1.8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="cover-inner">
+    <span class="cover-label">🗂 investment diligence dossier · research pass 1</span>
+    <h1>Growth99 Analysis</h1>
+    <p class="dek">Competitive positioning and ownership diligence for a potential investment in Growth99, the med-spa marketing-automation platform recapitalized in October 2024 by a search-fund syndicate led by Pracinco and Trilogy Search Partners.</p>
+    <dl class="cover-meta">
+      <div><dt>Opened</dt><dd>2026-08-16</dd></div>
+      <div><dt>Entities researched</dt><dd>20 of 34 identified</dd></div>
+      <div><dt>Breadth gate</dt><dd class="gate-pass">PASS — 3+ per category</dd></div>
+      <div><dt>Depth gate</dt><dd class="gate-partial">PARTIAL — see Open Questions</dd></div>
+      <div><dt>Focus entity</dt><dd>Growth99 (growth99.com)</dd></div>
+      <div><dt>Method</dt><dd>Live web research, single pass</dd></div>
+    </dl>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="toc">
+    <h2>Contents</h2>
+    <ul>
+      <li><a href="#summary">Executive summary</a></li>
+      <li><a href="#landscape">The landscape</a></li>
+      <li><a href="#ownership" class="priority">⭐ Ownership &amp; leadership</a></li>
+      <li><a href="#open-questions" class="priority">⭐ Open questions</a></li>
+      <li><a href="#pe-thesis" class="priority">⭐ PE acquisition thesis</a></li>
+    </ul>
+    <h2>Companies</h2>
+    <ul>
+      <li><a href="#growth99" class="priority">⭐ Growth99</a></li>
+      <li><a href="#boulevard">Boulevard</a></li>
+      <li><a href="#mangomint">Mangomint</a></li>
+      <li><a href="#patientnow">PatientNow</a></li>
+      <li><a href="#repeatmd">RepeatMD</a></li>
+      <li><a href="#vagaro">Vagaro</a></li>
+      <li><a href="#tebra">Tebra (PatientPop)</a></li>
+      <li><a href="#aestheticspro">AestheticsPro</a></li>
+    </ul>
+    <h2>People</h2>
+    <ul>
+      <li><a href="#rob-pickell" class="priority">⭐ Rob Pickell</a></li>
+      <li><a href="#cameron-hemphill">Cameron Hemphill</a></li>
+      <li><a href="#aaron-gabbart">Aaron Gabbart</a></li>
+    </ul>
+    <h2>Product &amp; tech</h2>
+    <ul>
+      <li><a href="#gia" class="priority">⭐ Gia (AI front desk)</a></li>
+      <li><a href="#platform">Core platform</a></li>
+      <li><a href="#emr-gap">EMR / clinical gap</a></li>
+    </ul>
+    <h2>Investors</h2>
+    <ul>
+      <li><a href="#pracinco">Pracinco</a></li>
+      <li><a href="#trilogy">Trilogy Search Partners</a></li>
+      <li><a href="#hunter">Hunter Search Capital</a></li>
+    </ul>
+    <h2>Trends</h2>
+    <ul>
+      <li><a href="#market-growth">Market growth</a></li>
+      <li><a href="#search-fund-model">Search-fund model</a></li>
+      <li><a href="#ai-race">AI lead-response race</a></li>
+    </ul>
+    <h2>Reference</h2>
+    <ul>
+      <li><a href="#method">Method &amp; sourcing</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section id="summary">
+      <h2 class="section-title">Executive Summary</h2>
+      <p><strong>Growth99 is no longer the company its brand history implies.</strong> Founder Cameron Hemphill grew it from a reputation-management tool into a 1,000+ practice marketing platform, but in October 2024 it was recapitalized via a search-fund acquisition — outside operator Rob Pickell became CEO, backed by at least six named investor entities. That transition, not the competitive product landscape, is the dominant fact of this diligence.</p>
+
+      <div class="table-wrap wide-note">
+        <table>
+          <caption>Company-by-company headline</caption>
+          <thead>
+            <tr><th>Company</th><th>Primary front</th><th>Standout fact</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Growth99</strong></td><td>Marketing automation / lead-gen</td><td>Recapitalized 2024 via search fund; AI front-desk bet (Gia); no EMR</td></tr>
+            <tr><td>Boulevard</td><td>Point-solution CRM</td><td>Salon tool adapted for med spa; texting-first UX</td></tr>
+            <tr><td>Mangomint</td><td>Point-solution CRM</td><td>Scheduling/team-management focus; $165–375/mo</td></tr>
+            <tr><td>PatientNow</td><td>CRM + EMR</td><td>Clinical charting Growth99 lacks; publishes Growth99 comparisons</td></tr>
+            <tr><td>RepeatMD</td><td>Loyalty / financing</td><td>Narrow engagement add-on, not a full platform</td></tr>
+            <tr><td>Vagaro</td><td>Point-solution CRM</td><td>Budget entry point (~$30/mo); practices outgrow it</td></tr>
+            <tr><td>Tebra (PatientPop)</td><td>Broad practice management</td><td>Post-merger service-quality decline — a roll-up cautionary tale</td></tr>
+            <tr><td>AestheticsPro</td><td>Med spa EMR</td><td>Clinical/compliance-first, inverse of Growth99's strength</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ol class="findings-list">
+        <li><strong>The investor syndicate is wider than "Pracinco and Trilogy."</strong> Public sources also name Hunter Search Capital (which explicitly backed Pickell as the search-fund entrepreneur), Search Fund Partners, Relay Investments, Endurance Search Partners, and possibly Cambria Group. A 6+ entity cap table raises the odds of a genuinely layered preference stack. <span class="chip chip-high">HIGH</span></li>
+        <li><strong>Growth99 fights on two structurally different fronts.</strong> Point-solution CRMs generally out-execute it on clinical/EMR charting, a capability it appears to lack entirely, while it leads on top-of-funnel marketing versus both those tools and traditional agencies. <span class="chip chip-med">MED</span></li>
+        <li><strong>Gia looks like a real differentiator, but it's unverified.</strong> No profiled competitor was found publicly marketing a comparable AI-lead-response feature — yet there is zero independent evidence Gia measurably improves conversion or retention versus being early-stage marketing language. <span class="chip chip-med">MED</span></li>
+        <li><strong>Founder Cameron Hemphill's current status is unconfirmed.</strong> Crunchbase still lists him as CEO, which conflicts with Growth99's own October 2024 announcement of Pickell — the single highest-priority open people question. <span class="chip chip-conflict">CONFLICT</span></li>
+        <li><strong>All core financial-quality questions are unanswered by design, not oversight.</strong> Revenue, revenue mix, NRR/churn, customer concentration, CAC/payback, and deal terms are not disclosed anywhere public for this private company — see <a href="#open-questions">Open Questions</a>.</li>
+      </ol>
+    </section>
+
+    <section id="landscape">
+      <h2 class="section-title">The Landscape</h2>
+      <p>Growth99 sits inside the med spa / aesthetics / elective-wellness software market — every source found agrees it is growing fast, driven by injectables and aesthetic procedures becoming routine consumer spend. The reliable figures put the U.S. med-spa-software slice at roughly <strong>$119M (2023) growing toward ~$432M (2033)</strong>, a 13.8% CAGR; a much larger figure ($950.5B) surfaced in one source and is flagged unreliable, likely a scoping error. Growth99 itself already claims 1,000+ practices and 2,300+ users — worth reconciling against real revenue once available.</p>
+
+      <h4>Two competitive fronts</h4>
+      <p><strong>Point-solution software</strong> — Boulevard, Mangomint, PatientNow, RepeatMD, Vagaro, AestheticsPro, Tebra — none matched Growth99's top-of-funnel marketing depth, but several beat it on the capability it structurally lacks: clinical/EMR charting.</p>
+      <p><strong>Traditional agencies</strong> — Rosemont Media, Etna Interactive, Brenton Way, Cardinal, Intrepy, Medstar, Influx, Studio 3 Marketing — identified but not yet profiled (see <a href="#method">Method</a>). Growth99's own marketing pitches directly against this front: "Better Than A Med Spa Digital Marketing Agency."</p>
+
+      <div class="callout">
+        Unlike a typical VC-backed SaaS competitor set, Growth99 is not founder-led anymore. Ownership structure — not the product landscape — is likely the largest single risk factor in any new investment, because it directly determines preference stack, governance rights, and entry basis. See <a href="#ownership">Ownership &amp; Leadership</a>.
+      </div>
+    </section>
+
+    <section id="ownership">
+      <h2 class="section-title">Ownership &amp; Leadership</h2>
+      <p class="section-sub">The defining fact of this deal: a 2024 search-fund recapitalization, not organic founder-led growth.</p>
+
+      <div class="spotlight">
+        <span class="stamp stamp-critical">Priority — CEO transition</span>
+        <article id="rob-pickell">
+          <div class="card-head">
+            <h3 class="entry-title">Rob Pickell</h3>
+            <div class="tags"><span class="chip chip-high">CEO since Oct 2024</span></div>
+          </div>
+          <p>CEO of Growth99 since October 30, 2024, having acquired the company via a traditional search-fund structure backed by Hunter Search Capital. <span class="chip chip-high">HIGH</span></p>
+          <p>Prior roles: CMO/GTM strategist at Kantata; CMO (sales, CX, P&amp;L) at Kareo — the company that later merged with PatientPop to form Tebra, one of the competitors profiled here, giving him direct prior exposure to this exact competitive set. Earlier: CMO/Product/GM at HireRight. Wharton MBA; active angel investor with Tech Coast Angels. <span class="chip chip-med">MED</span></p>
+          <p>Oct 2024 also brought three new execs: John DeBrincat (VP Marketing), Ben Hahr (VP Product), Brent Nau (GM, Digital Marketing Services).</p>
+          <p>~18–24 months of his tenure is the entire observable execution track record as of this research — pre/post-transition cohort performance is not public and needs a direct management ask.</p>
+          <div class="source-list">
+            <details><summary>Sources (2)</summary>
+              <ul>
+                <li><a href="https://growth99.com/press-release/growth99-new-announcements/">Growth99 — Press release, Oct 30 2024</a></li>
+                <li><a href="https://www.huntersearchcapital.com/entrepreneurs/rob-pickell">Hunter Search Capital — Rob Pickell</a></li>
+              </ul>
+            </details>
+          </div>
+        </article>
+      </div>
+
+      <div class="spotlight">
+        <span class="stamp stamp-open">Open — status unconfirmed</span>
+        <article id="cameron-hemphill">
+          <div class="card-head">
+            <h3 class="entry-title">Cameron Hemphill</h3>
+            <div class="tags"><span class="chip chip-conflict">CONFLICT</span></div>
+          </div>
+          <p>Founder and former President/CEO of Growth99, credited with growing it from a reputation-management tool into a comprehensive marketing automation platform. Also hosts the Medical Millionaire Podcast. <span class="chip chip-med">MED</span></p>
+          <p><strong>Current status unclear.</strong> Crunchbase still lists him as "CEO and Founder," which conflicts with Growth99's own October 2024 announcement of Pickell as new CEO. No source confirms whether he retains a board seat, an advisory role, or has fully exited. A reference call with him — explicitly requested in the diligence brief as a "departed executive from before the 2024 leadership change" — would be one of the highest-value gets in this diligence.</p>
+          <div class="source-list">
+            <details><summary>Sources (2)</summary>
+              <ul>
+                <li><a href="https://www.crunchbase.com/person/cameron-hemphill">Crunchbase — Cameron Hemphill</a> (likely stale on title)</li>
+                <li><a href="https://themedicalmillionairepodcast.com/">Medical Millionaire Podcast</a></li>
+              </ul>
+            </details>
+          </div>
+        </article>
+      </div>
+
+      <article id="aaron-gabbart" class="card">
+        <div class="card-head">
+          <h3 class="entry-title">Aaron Gabbart</h3>
+          <div class="tags"><span class="chip chip-high">Pracinco investor</span></div>
+        </div>
+        <p>Investor at Pracinco, publicly quoted as its representative on the Growth99 deal. Previously CEO (2009–2013) then Chairman (2013–2017) of BenefitGuard, a 401(k) fiduciary grown to ~$200M AUM and sold to NASDAQ: HQY (HealthEquity). Led search-fund investing at Peterson Partners for ~6 years prior to Pracinco — direct continuity with the search-fund network now backing Growth99. BYU, Entrepreneurship + MBA.</p>
+        <p>On record: <em>"We are excited to partner with Growth99 in this next phase of their journey."</em></p>
+        <div class="source-list">
+          <details><summary>Sources (1)</summary>
+            <ul><li><a href="https://growth99.com/press-release/growth99-new-announcements/">Growth99 — Press release, Oct 30 2024</a></li></ul>
+          </details>
+        </div>
+      </article>
+
+      <article id="search-fund-model" class="card">
+        <div class="card-head">
+          <h3 class="entry-title">The search-fund ownership model</h3>
+          <div class="tags"><span class="chip chip-high">Trend</span></div>
+        </div>
+        <p>Growth99 is a live example: acquired in 2024 via a traditional search fund, with Pickell backed by six-plus named investor entities rather than a single lead. Structurally distinct from VC/growth-equity SaaS — search funds acquire an already-profitable operating business and install an outside operator-CEO. This directly informs the preference-stack and governance questions: more distinct investor entities means a higher likelihood of a genuinely layered cap table.</p>
+        <p>Also bears on the primary-vs-secondary question: search-fund deals commonly give the operating entrepreneur founder-level equity while existing search-fund investors keep preferred positions — whether new capital would be primary growth capital or a partial LP buyout is not publicly disclosed.</p>
+        <div class="source-list">
+          <details><summary>Sources (2)</summary>
+            <ul>
+              <li><a href="https://searcherinsights.com/network/deals/growth99/">Searcher Insights — Growth99 deal page</a></li>
+              <li><a href="https://trilogy-search.com/approach">Trilogy Search Partners — Approach</a></li>
+            </ul>
+          </details>
+        </div>
+      </article>
+    </section>
+
+    <section id="companies">
+      <h2 class="section-title">Company Profiles</h2>
+
+      <article id="growth99" class="card">
+        <div class="card-head">
+          <h3 class="entry-title">Growth99</h3>
+          <div class="tags"><span class="stamp stamp-critical">Focus entity</span></div>
+        </div>
+        <p>Vertical marketing-automation / CRM platform for medical aesthetics and elective-wellness practices — med spas, plastic surgery, dermatology, dental.</p>
+        <dl class="stat-row">
+          <div><dt>HQ</dt><dd>Salt Lake City, UT</dd></div>
+          <div><dt>Founded</dt><dd class="chip chip-conflict" style="display:inline-block">2015 / 16 / 17</dd></div>
+          <div><dt>Employees</dt><dd class="chip chip-conflict" style="display:inline-block">192 or 271</dd></div>
+          <div><dt>Practices served</dt><dd>1,000+</dd></div>
+          <div><dt>CEO</dt><dd>Rob Pickell (since Oct 2024)</dd></div>
+        </dl>
+        <h4>Business model</h4>
+        <p>Sold as software <em>and</em> managed services (Growth99 staff running SEO/ad campaigns) — a dual model in tension with Searcher Insights' "pure B2B SaaS" label. Entry pricing reported around $300/month by a third party; Growth99 publishes no public pricing.</p>
+        <h4>Product lines</h4>
+        <p>Gia (AI front desk), core marketing-automation platform (websites, SEO, paid ads, reputation, CRM), and a separate client-messaging/Practice Manager module for ongoing communication with existing clients.</p>
+        <h4>Corporate history</h4>
+        <p>Founded by Cameron Hemphill; recapitalized in 2024 via search fund under Rob Pickell, backed by Pracinco, Trilogy Search Partners, Hunter Search Capital, and others.</p>
+        <h4>Not publicly disclosed</h4>
+        <p class="wide-note">Revenue, ARR, revenue mix, NRR, gross churn, customer concentration, CAC/payback, and Pracinco/Trilogy deal terms — no fabrication attempted; flagged for direct diligence.</p>
+        <div class="source-list">
+          <details><summary>Sources (6)</summary>
+            <ul>
+              <li><a href="https://growth99.com/">Growth99 — Home</a></li>
+              <li><a href="https://growth99.com/about-us/">Growth99 — About Us</a></li>
+              <li><a href="https://growth99.com/press-release/growth99-new-announcements/">Growth99 — Press release, Oct 30 2024</a></li>
+              <li><a href="https://trilogy-search.com/portfolio">Trilogy Search Partners — Portfolio</a></li>
+              <li><a href="https://searcherinsights.com/network/deals/growth99/">Searcher Insights — Growth99 deal page</a></li>
+              <li><a href="https://tracxn.com/d/companies/growth99/__I3sy5SahORLANLqH_1Vqc-v-MNcfKTvceuYy1oGx6wU">Tracxn — Growth99 profile</a></li>
+            </ul>
+          </details>
+        </div>
+      </article>
+
+      <div class="grid-2">
+        <article id="boulevard" class="card">
+          <div class="card-head"><h3 class="entry-title">Boulevard</h3><span class="chip chip-med">MED</span></div>
+          <p>Salon booking tool adapted for med spa use; texting-first client communication is the core differentiator. Competes mainly on the client-messaging/CRM layer, not SEO/paid media.</p>
+          <div class="source-list"><details><summary>Sources (1)</summary><ul><li><a href="https://www.patientnow.com/resources/compare/med-spa-boulevard-alternatives">PatientNow — Boulevard alternatives</a></li></ul></details></div>
+        </article>
+        <article id="mangomint" class="card">
+          <div class="card-head"><h3 class="entry-title">Mangomint</h3><span class="chip chip-med">MED</span></div>
+          <p>Modern salon/spa scheduling and team-management platform. Pricing: Starter $165/mo (≤10 providers), Unlimited $375/mo. Operations-first, not a marketing/lead-gen competitor.</p>
+          <div class="source-list"><details><summary>Sources (1)</summary><ul><li><a href="https://www.g2.com/products/mangomint/competitors/alternatives">G2 — Mangomint alternatives</a></li></ul></details></div>
+        </article>
+        <article id="patientnow" class="card">
+          <div class="card-head"><h3 class="entry-title">PatientNow</h3><span class="chip chip-med">MED</span></div>
+          <p>Combines CRM and EMR — structured charts, treatment history, before/after photo tools. Explicitly frames Growth99 (with Vagaro, Aesthetix CRM) as marketing-only, lacking clinical charting — a real, checkable structural gap.</p>
+          <div class="source-list"><details><summary>Sources (1)</summary><ul><li><a href="https://www.patientnow.com/resources/compare/best-medical-spa-crm">PatientNow — Best medical spa CRM</a></li></ul></details></div>
+        </article>
+        <article id="repeatmd" class="card">
+          <div class="card-head"><h3 class="entry-title">RepeatMD</h3><span class="chip chip-med">MED</span></div>
+          <p>Loyalty and patient-financing focus — described by a third party as functioning "more as an engagement add-on" than a comprehensive platform. Narrower scope than Growth99.</p>
+          <div class="source-list"><details><summary>Sources (1)</summary><ul><li><a href="https://www.portraitcare.com/post/alternatives-repeatmd">Portrait — RepeatMD alternatives</a></li></ul></details></div>
+        </article>
+        <article id="vagaro" class="card">
+          <div class="card-head"><h3 class="entry-title">Vagaro</h3><span class="chip chip-med">MED</span></div>
+          <p>Budget booking platform from ~$30/month, positioned for solo/early-stage practices. Third parties note practices typically switch away once they need clinical workflows or deeper reporting.</p>
+          <div class="source-list"><details><summary>Sources (1)</summary><ul><li><a href="https://www.phorest.com/us/blog/best-med-spa-software-for-booking-in-2026-a-comparison-for-growing-aesthetic-practices/">Phorest — Best med spa booking software 2026</a></li></ul></details></div>
+        </article>
+        <article id="tebra" class="card">
+          <div class="card-head"><h3 class="entry-title">Tebra (PatientPop + Kareo)</h3><span class="chip chip-med">MED</span></div>
+          <p>Once the leading healthcare-practice marketing platform (PatientPop); merged with Kareo in 2022. Third parties report post-merger service-quality decline — a cautionary comparable if Growth99 pursues its own bolt-on M&amp;A.</p>
+          <div class="source-list"><details><summary>Sources (1)</summary><ul><li><a href="https://getdeardoc.com/blog/best-patientpop-alternatives">DearDoc — PatientPop (Tebra) alternatives</a></li></ul></details></div>
+        </article>
+        <article id="aestheticspro" class="card">
+          <div class="card-head"><h3 class="entry-title">AestheticsPro</h3><span class="chip chip-med">MED</span></div>
+          <p>Purpose-built med spa EMR from ~$160/month — treatment charting and compliance workflows. The inverse of Growth99's strength: clinical-first where Growth99 is marketing-first.</p>
+          <div class="source-list"><details><summary>Sources (1)</summary><ul><li><a href="https://www.aestheticspro.com/Blog/AestheticsPro-Vs.-Vagaro/">AestheticsPro vs. Vagaro</a></li></ul></details></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="product-tech">
+      <h2 class="section-title">Product &amp; Technology</h2>
+
+      <article id="gia" class="card">
+        <div class="card-head">
+          <h3 class="entry-title">Gia — AI Front Desk</h3>
+          <div class="tags"><span class="chip chip-high">HIGH — feature exists</span><span class="chip chip-med">MED — impact unverified</span></div>
+        </div>
+        <p>AI-powered lead-response engine covering website forms, Facebook, Instagram DMs, SMS, and CallRail calls — responds within 60 seconds, 24/7, trained on the practice's brand voice, with human handoff for medical or complex questions.</p>
+        <p>Marketed as "proprietary," but Growth99 discloses no underlying model architecture — no confirmation either way on whether it's built on a third-party LLM. No independent (non-Growth99) evidence of measurable retention or conversion lift was found; all current claims trace to Growth99's own marketing.</p>
+        <p><strong>Open question:</strong> is this a genuine near-term moat, or the most vocal marketing of a capability competitors also have quietly? This pass did not run a dedicated AI-feature search per competitor.</p>
+        <div class="source-list">
+          <details><summary>Sources (2)</summary>
+            <ul>
+              <li><a href="https://growth99.com/products/gia-ai-front-desk-for-aesthetic-practices/">Growth99 — Gia product page</a></li>
+              <li><a href="https://growth99.com/ai-info-page/">Growth99 — AI info page</a></li>
+            </ul>
+          </details>
+        </div>
+      </article>
+
+      <div class="grid-2">
+        <article id="platform" class="card">
+          <div class="card-head"><h3 class="entry-title">Core marketing-automation platform</h3><span class="chip chip-high">HIGH</span></div>
+          <p>CRM, review/reputation management, lead generation, client communications, SEO, paid advertising, content marketing — sold as one integrated system. No public disclosure on how much is built in-house vs. licensed/white-labeled.</p>
+          <div class="source-list"><details><summary>Sources (1)</summary><ul><li><a href="https://growth99.com/solutions/marketing-your-practice/">Growth99 — Marketing Your Practice</a></li></ul></details></div>
+        </article>
+        <article id="emr-gap" class="card">
+          <div class="card-head"><h3 class="entry-title">EMR / clinical charting — the gap</h3><span class="chip chip-med">MED</span></div>
+          <p>Clinical charting is consistently absent from Growth99 across two independent competitor comparisons (PatientNow, AestheticsPro). This is the technical boundary of Growth99's addressable market and matters directly for adjacent-vertical (dental, general medical) expansion.</p>
+          <div class="source-list"><details><summary>Sources (2)</summary><ul><li><a href="https://www.patientnow.com/resources/compare/best-medical-spa-crm">PatientNow comparison</a></li><li><a href="https://www.aestheticspro.com/Blog/AestheticsPro-Vs.-Vagaro/">AestheticsPro comparison</a></li></ul></details></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="investors">
+      <h2 class="section-title">Investor Syndicate</h2>
+      <div class="grid-2">
+        <article id="pracinco" class="card">
+          <div class="card-head"><h3 class="entry-title">Pracinco</h3><span class="chip chip-high">Lead, Oct 2024</span></div>
+          <p>Led the investor group in Growth99's October 2024 recap. Naming inconsistent across sources ("Pracinco" / "Pracinco Companies" / "Pracinco Partners") — a Utah-registered "PRACINCO MANAGEMENT, LLC" was found via OpenCorporates but not fully reconciled. Represented by Aaron Gabbart. Investment amount not disclosed.</p>
+          <div class="source-list"><details><summary>Sources (2)</summary><ul><li><a href="https://growth99.com/press-release/growth99-new-announcements/">Growth99 — Press release</a></li><li><a href="https://opencorporates.com/companies/us_ut/11267808-0160">OpenCorporates — Pracinco Management, LLC</a></li></ul></details></div>
+        </article>
+        <article id="trilogy" class="card">
+          <div class="card-head"><h3 class="entry-title">Trilogy Search Partners</h3><span class="chip chip-high">HIGH</span></div>
+          <p>Lists Growth99 on its own public portfolio page. Founded 2014; invests in acquisitions of small, profitable companies sourced by search-fund entrepreneurs. Tracxn's claim that Trilogy is "the only investor" is contradicted by primary sources confirming a multi-investor syndicate — treated as unreliable.</p>
+          <div class="source-list"><details><summary>Sources (1)</summary><ul><li><a href="https://trilogy-search.com/portfolio">Trilogy Search Partners — Portfolio</a></li></ul></details></div>
+        </article>
+        <article id="hunter" class="card">
+          <div class="card-head"><h3 class="entry-title">Hunter Search Capital</h3><span class="chip chip-high">HIGH</span></div>
+          <p>Portfolio page explicitly labels the deal structure "Traditional Search Fund," investment date 2024, and confirms Rob Pickell as the backed entrepreneur — the single most specific and reliable deal-structure confirmation found in this pass.</p>
+          <div class="source-list"><details><summary>Sources (1)</summary><ul><li><a href="https://www.huntersearchcapital.com/portfolio-companies/growth99">Hunter Search Capital — Growth99</a></li></ul></details></div>
+        </article>
+      </div>
+      <div class="table-wrap wide-note">
+        <table>
+          <caption>Named but not yet independently verified</caption>
+          <thead><tr><th>Investor</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Search Fund Partners</td><td><span class="chip chip-na">PENDING</span> — named by Searcher Insights &amp; PitchBook aggregation</td></tr>
+            <tr><td>Relay Investments</td><td><span class="chip chip-na">PENDING</span> — named by the same aggregation</td></tr>
+            <tr><td>Endurance Search Partners</td><td><span class="chip chip-na">PENDING</span> — named by the same aggregation</td></tr>
+            <tr><td>Cambria Group</td><td><span class="chip chip-na">PENDING</span> — single-source, uncorroborated</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="trends">
+      <h2 class="section-title">Trends</h2>
+
+      <article id="market-growth" class="card">
+        <div class="card-head"><h3 class="entry-title">Med spa market growth</h3><span class="chip chip-med">MED</span></div>
+        <dl class="stat-row">
+          <div><dt>US med spa software (2023)</dt><dd>$118.65M</dd></div>
+          <div><dt>Projected (2033)</dt><dd>$432.21M · 13.8% CAGR</dd></div>
+          <div><dt>Med spa industry (2024)</dt><dd>$21.21B</dd></div>
+          <div><dt>Projected (2033)</dt><dd>$78.23B · 15.77% CAGR</dd></div>
+        </dl>
+        <p>Growth driver: injectables/microneedling mainstreaming into routine consumer spend. A separate $950.5B global "software market" figure was found and is <strong>flagged unreliable</strong> — internally inconsistent by roughly 2,000x against the U.S. figure, likely a scoping error.</p>
+        <div class="source-list"><details><summary>Sources (2)</summary><ul><li><a href="https://www.novaoneadvisor.com/report/us-medical-spa-management-software-market">NovaOne Advisor — Market size</a></li><li><a href="https://www.precedenceresearch.com/medical-spa-market">Precedence Research — Medical spa market</a></li></ul></details></div>
+      </article>
+
+      <article id="ai-race" class="card">
+        <div class="card-head"><h3 class="entry-title">AI-native lead engagement as a battleground</h3><span class="chip chip-med">MED</span></div>
+        <p>Gia was the headline of Growth99's Oct 2024 relaunch. No directly comparable AI-lead-response feature was found publicly marketed by the 7 profiled competitors — but this was not exhaustively tested per-competitor, so the trend's real strength is unconfirmed pending pass 2.</p>
+        <div class="source-list"><details><summary>Sources (1)</summary><ul><li><a href="https://growth99.com/press-release/growth99-new-announcements/">Growth99 — Press release, Oct 30 2024</a></li></ul></details></div>
+      </article>
+    </section>
+
+    <section id="open-questions">
+      <h2 class="section-title">Open Questions — Diligence Checklist</h2>
+      <p class="section-sub">Mapped to the original diligence brief. Nothing below was fabricated — every item is unavailable in public sources and requires direct engagement with Growth99 management or its investors.</p>
+
+      <div class="grid-2">
+        <div class="spotlight">
+          <span class="stamp stamp-open">Open</span>
+          <h4>Financial &amp; revenue quality</h4>
+          <p class="wide-note">SaaS vs. managed-services revenue mix · NRR &amp; gross churn by practice size/tenure · customer concentration · Pracinco/Trilogy preference stack, liquidation preferences, board seats · pre/post-CEO-transition cohort performance.</p>
+        </div>
+        <div class="spotlight">
+          <span class="stamp stamp-open">Open</span>
+          <h4>Market &amp; competitive</h4>
+          <p class="wide-note">Narrow TAM within med spa/aesthetics vs. adjacent verticals (dental, general medical) · named win/loss data vs. point solutions and agencies · CAC and payback trend.</p>
+        </div>
+        <div class="spotlight">
+          <span class="stamp stamp-open">Open</span>
+          <h4>Product &amp; technology</h4>
+          <p class="wide-note">Proprietary IP vs. wrapped third-party tools, platform-wide and for Gia specifically · measurable retention impact of AI features vs. marketing claims · manual work behind "automated" features · tech debt given services-heavy delivery.</p>
+        </div>
+        <div class="spotlight">
+          <span class="stamp stamp-open">Open</span>
+          <h4>Team &amp; operations</h4>
+          <p class="wide-note">CEO/CFO reference calls · departed-executive reference calls (Hemphill) · sales/delivery org structure · customer-facing employee turnover.</p>
+        </div>
+        <div class="spotlight">
+          <span class="stamp stamp-open">Open</span>
+          <h4>Deal structure</h4>
+          <p class="wide-note">Where new capital sits vs. Pracinco/Trilogy/search-fund investors · primary growth capital vs. secondary buyout vs. mix · board composition and information rights · exit-path assumptions (strategic sale, roll-up, later PE recap).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pe-thesis">
+      <h2 class="section-title">PE Acquisition Thesis</h2>
+      <p class="section-sub">A buyer-side working plan: what a financial sponsor would diligence, and where the highest-conviction value-creation gaps sit. Analytical judgment layered on top of the researched facts above, not a new research pass — treat confidence tags in this section as strategic assessment, not sourced claims.</p>
+
+      <div class="spotlight">
+        <span class="stamp stamp-critical">BLUF</span>
+        <p class="wide-note" style="margin-top:0.6rem;">Growth99 is a <strong>buy-it-messy-and-fix-it</strong> thesis, not a clean roll-up-ready SaaS asset. It has real distribution (1,000+ practices) in a fast-growing niche, but it is services-heavy, structurally missing the clinical/EMR layer that would make it sticky, and sitting under an unresolved six-plus-party search-fund cap table only 18 months into a CEO transition. The value isn't in what Growth99 already is — it's in (1) simplifying the ownership structure at a discount while it's still messy, (2) converting services delivery into AI-augmented margin rather than AI-as-marketing, and (3) using Growth99's existing scale to roll up fragmented point-solution competitors, starting with an EMR bolt-on to close its single biggest product gap. Don't pay a software multiple until the SaaS-vs-services mix is proven.</p>
+      </div>
+
+      <h4>The thesis in one paragraph</h4>
+      <p class="wide-note">Growth99 has something most of its point-solution competitors don't: scale and a marketing/lead-gen product genuinely differentiated from EMR-first rivals like AestheticsPro and PatientNow. What it lacks is proof it's a software company rather than an agency with a CRM bolted on, a cap table simple enough to transact cleanly, or a finished leadership story. The edge here isn't spotting the market — everyone can see ~14% CAGR med spa software growth — it's being willing to untangle ownership, re-price the services book, and buy the clinical capability the company is missing, while the business is still under-optimized enough that a strategic acquirer hasn't already bid the messiness away.</p>
+
+      <h3 class="entry-title" style="font-size:1.15rem; margin-top:2rem;">1 — What to look for in diligence</h3>
+      <div class="grid-2" style="margin-top:1rem;">
+        <article class="card">
+          <div class="card-head"><h3 class="entry-title" style="font-size:1.05rem;">Revenue quality</h3><span class="chip chip-critical" style="background:var(--critical-bg);color:var(--critical);">Determines the multiple</span></div>
+          <p>Real SaaS-vs-managed-services split, by dollar and margin — Growth99's own pages describe hands-on SEO/ad delivery, which is agency economics, not software economics. NRR and gross churn segmented by practice size and tenure (single-location med spas skew SMB-churn, not enterprise). Pre- vs. post-CEO-transition cohort performance, not blended numbers — you're buying ~18–24 months of Pickell's track record.</p>
+        </article>
+        <article class="card">
+          <div class="card-head"><h3 class="entry-title" style="font-size:1.05rem;">Ownership &amp; structure</h3><span class="chip chip-critical" style="background:var(--critical-bg);color:var(--critical);">Blocks the deal if unresolved</span></div>
+          <p>Full cap table map — at least six investor entities plus founder Cameron Hemphill, whose current status is unconfirmed anywhere public. Find out who actually holds a board seat vs. who's a passive LP before assuming "Pracinco and Trilogy" is the whole negotiation. Get Hemphill's exit terms and IP assignment in writing — an unresolved founder claim is a landmine in change-of-control.</p>
+        </article>
+        <article class="card">
+          <div class="card-head"><h3 class="entry-title" style="font-size:1.05rem;">Product &amp; technology</h3><span class="chip chip-med">Sets the multiple type</span></div>
+          <p>Get under the hood on Gia — no independent evidence it moves retention or conversion exists; everything public is Growth99's own marketing copy. Confirm how much of the core platform is built vs. licensed/white-labeled — the difference between a 70%-margin software company and a 40%-margin services company wearing a software UI.</p>
+        </article>
+        <article class="card">
+          <div class="card-head"><h3 class="entry-title" style="font-size:1.05rem;">Team &amp; delivery</h3><span class="chip chip-med">Churn predictor</span></div>
+          <p>CEO and CFO reference calls, plus Hemphill and any other pre-2024 departed execs — he's the only person with a clean pre/post comparison view. Account-manager/customer-facing turnover specifically — in a services-heavy delivery model this is closer to the real churn predictor than logo retention.</p>
+        </article>
+      </div>
+
+      <h3 class="entry-title" style="font-size:1.15rem; margin-top:2rem;">2 — Where the best gaps are to lean into</h3>
+      <p class="section-sub" style="margin-top:0.4rem;">Ranked by expected value creation.</p>
+      <ol class="findings-list">
+        <li><strong>Close the EMR/clinical gap — the highest-conviction lever.</strong> Every competitor comparison in this dossier (PatientNow, AestheticsPro) frames Growth99 the same way: strong on marketing, absent on clinical charting — the reason a practice needs a second vendor. Build or, more likely, bolt on a smaller EMR player. This converts Growth99 from "one tool in the stack" to "the system of record" — the move most likely to justify a re-rate at exit.</li>
+        <li><strong>Roll up the fragmented point-solution field.</strong> Boulevard, Mangomint, Vagaro, RepeatMD, AestheticsPro are all smaller, single-purpose tools. Growth99's 1,000+ practice base is real distribution scale most of them don't have — an unusually clean roll-up target list, since no single player yet has both marketing and clinical depth.</li>
+        <li><strong>Convert the services book into an AI margin story, not an AI marketing story.</strong> The more interesting use of the Gia-underlying AI investment isn't the customer-facing lead-response pitch — it's applying the same technology to cut the labor cost of the account-manager-dependent SEO/ad-management delivery. That's a direct COGS lever on the thinner-margin half of the revenue mix.</li>
+        <li><strong>Simplify the cap table while it's still cheap to do.</strong> A crowded search-fund syndicate this early post-recap (Oct 2024) likely has LPs who'd take liquidity at a modest premium rather than wait years for a search-fund-style outcome. Consolidating the smaller entities into a clean majority position is itself a value-creation move — buy complexity at a discount, sell simplicity at a premium later.</li>
+        <li><strong>Vertical adjacency expansion.</strong> Growth99's own content already spans dental and general medical marketing. Lower-conviction until real traction outside med spa is confirmed — treat as upside, not base case.</li>
+        <li><strong>Pricing and packaging.</strong> No public pricing exists and delivery looks bundled/ad hoc. A dedicated tiering/packaging pass (Gia as a paid add-on, usage-based AI monetization) is classic first-100-day playbook and likely low-hanging fruit.</li>
+      </ol>
+
+      <h3 class="entry-title" style="font-size:1.15rem; margin-top:2rem;">3 — Deal structure to push for</h3>
+      <div class="callout">
+        <strong>Majority buyout / recap, not a minority check.</strong> A minority position alongside six other search-fund entities inherits the governance mess without the control to fix it — push for a structure that lets you consolidate or subordinate the smaller LPs.
+      </div>
+      <div class="callout">
+        <strong>Re-cut CEO incentives, don't assume continuity.</strong> Pickell's equity from the 2024 search-fund deal was built for a different ownership scenario — any new capital should come with a fresh alignment conversation.
+      </div>
+      <div class="callout">
+        <strong>Price the earnout/hold-back around Gia's unverified claims.</strong> Structure part of consideration contingent on Gia delivering measurable retention/conversion metrics post-close rather than paying full value for the AI story up front.
+      </div>
+
+      <h3 class="entry-title" style="font-size:1.15rem; margin-top:2rem;">4 — What kills this thesis</h3>
+      <div class="callout open-question">
+        If diligence shows the "SaaS" label is mostly aspirational and revenue is majority low-margin services, the multiple math doesn't work above a marketing-agency multiple. If Hemphill has an unresolved claim or the cap table can't be consolidated cleanly, transaction complexity may not be worth the discount. If churn among small single-location practices is running high (likely, unconfirmed), the "1,000+ practices" headline is a vanity metric, not a moat.
+      </div>
+
+      <h4>Recommended next step</h4>
+      <p class="wide-note">Run a targeted pass against the four items that determine whether this thesis survives contact with real numbers: revenue-mix reconciliation, full cap-table mapping, Hemphill's current status, and an initial EMR bolt-on target list.</p>
+    </section>
+
+    <section id="method">
+      <h2 class="section-title">Method &amp; Sourcing</h2>
+      <p>All facts in this dossier come from live web search and fetch conducted 2026-08-16 (single research pass), not training-data memory. Every link was fetched and verified to resolve during research. No URL, contact detail, or financial figure was invented — items with no public source are logged as unavailable rather than guessed. Confidence tags (<span class="chip chip-high">HIGH</span> primary source, <span class="chip chip-med">MED</span> secondary/aggregator, <span class="chip chip-conflict">CONFLICT</span> sources disagree) appear next to non-obvious claims throughout.</p>
+      <div class="callout open-question">
+        <strong>Pass 1 of N.</strong> Breadth gate met (3+ researched entities per category). Depth gate partial — priorities for pass 2: identify Growth99's CFO, resolve Hemphill's current status, run per-competitor AI-feature verification, corroborate the four PENDING investors, and profile the agency-front competitors (Rosemont Media, Etna Interactive, Brenton Way, and others).
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="colophon">
+  Source vault: <span class="mono">LIFEOS/MEMORY/RESEARCH/2026-08/2026-08-16_growth99-competitive-intel/</span> on branch <span class="mono">claude/growth99-research-vault-9a2o5a</span>. Generated 2026-08-16.
+</footer>
+</body>
+</html>

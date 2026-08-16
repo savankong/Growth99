@@ -7,10 +7,13 @@
 
 Read this file top to bottom to reconstruct the full state of this research.
 
+**Published dossier (single-page, styled):** https://claude.ai/code/artifact/7319385a-519d-4720-bcc7-b56ada0ac516 — also mirrored in this repo at [`dossier/growth99-analysis.html`](../../../../../dossier/growth99-analysis.html).
+
 ## Start Here
 
 - **[SUMMARY.md](SUMMARY.md)** — the five things worth knowing immediately, gate status, and the pass-2 priority list. Read this first.
 - **[LANDSCAPE.md](LANDSCAPE.md)** — the synthesized narrative: the market, the two competitive fronts, Growth99's AI bet, and the ownership-structure risk that dominates this deal.
+- **[PE-ACQUISITION-THESIS.md](PE-ACQUISITION-THESIS.md)** — buyer-side working plan: BLUF, diligence priorities, ranked value-creation gaps, deal structure, and what kills the thesis. Analytical judgment, not new sourced research.
 - **[ENTITIES.md](ENTITIES.md)** — full catalog of every entity in scope, tagged RESEARCHED / PENDING / SKIP, with links to profiles.
 
 ## Companies (8 researched)
