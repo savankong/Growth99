@@ -28,15 +28,25 @@
 - Practice Manager / client-messaging automation module, marketed as a separate product line from Gia. [MED] — [Practice Manager page](https://growth99.com/practice-manager/)
 - Explicitly serves adjacent verticals beyond med spa: dental, dermatology, general "elective wellness" — supports the diligence question about adjacent-vertical expansion. [HIGH] — [Growth99 home](https://growth99.com/)
 
-## Financial / Deal Terms — NOT FOUND
+## Legal Entity & Cap Table (pass 2)
 
-No public source discloses: revenue, ARR, revenue mix (SaaS vs. services), net revenue retention, gross churn, customer concentration, CAC/payback, or the Pracinco/Trilogy preferred-stock/liquidation-preference/board-seat terms. These are private-company deal terms not present in any public filing (Growth99 is not SEC-registered) and were **not fabricated** — flagged PENDING for direct management/investor inquiry rather than public research. [N/A — no source]
+- Legal entity name: **Growth99 Holdings LLC**, per a business-data aggregator. Not independently confirmed against a state registry — direct OpenCorporates and Utah state-registry queries returned 403/blocked responses in this pass. [MED, single-source] — [aggregate business-data search]
+- **SEC EDGAR full-text search for Form D filings under "Growth99," "Growth99 Holdings," and "Pracinco" all returned zero hits.** No public securities-offering trail exists for the 2024 recapitalization. This is consistent with — not contradictory to — the deal being a private M&A stock/asset purchase financed directly by the search-fund investors' own committed capital vehicles (their funds, not a new registered offering under Growth99's name), which is standard search-fund acquisition mechanics. Practical conclusion: **the cap table is not reconstructable from public filings** — full preference-stack and governance detail requires negotiated access, not further public search. [HIGH — confirms the absence; MED on the interpretation of why]
+- Investor count: one aggregator states **8 total investors** (vs. the 6 named entities identified in pass 1 plus one unconfirmed) — consistent order of magnitude, doesn't newly name the remaining 1–2. [MED]
 
-## Open Questions for Next Pass
+## Revenue Estimate (pass 2 — directional only, not disclosed)
 
-- Resolve founding-year and employee-count conflicts against a primary source (e.g., direct outreach, LinkedIn company page scrape, or state business registration).
-- Revenue mix, NRR/churn, CAC/payback — not publicly available; requires management data room.
-- Confirm SaaS-vs-services revenue split given the discrepancy between Searcher Insights' "pure SaaS" label and Growth99's visible services offerings.
+- Two independent third-party estimators converge on a similar band: Growjo estimates **$28.7M revenue / 180 employees**; a separate ZoomInfo-derived aggregate estimates **$25M–$50M revenue / 192 employees**. Both are automated estimators (crawl hiring signals, web traffic, etc.), not disclosed figures, and should be treated as **directional only** — but two independently-built estimators landing in the same band is somewhat more reassuring than either alone. [LOW-MED] — [Growjo — Growth99.com](https://growjo.com/company/Growth99.com), [ZoomInfo aggregate via search]
+- Job postings (careers page, FlexJobs, Instahyre) show open roles spanning software development, computer security/IT, project management, operations, and risk management alongside marketing/SEO roles — real internal engineering investment exists, which is a soft positive signal against the "it's just an agency" concern, though it does not quantify the SaaS-vs-services revenue split. [MED] — [Growth99 Careers](https://growth99.com/careers/)
+- Growth99 markets a premium "Growth Elite" tier with "dedicated account management" and a "Customer Success Manager during onboarding" — confirms a deliberate hybrid software+white-glove-service tiering, not an accidental mix. Still does not disclose what % of revenue each tier represents. [MED] — [search aggregate of Growth99 marketing/review content]
+- **Still unresolved:** the actual % split between SaaS/platform revenue and managed-services revenue. This number does not exist in any public source and requires management's own reporting — flagged as the top item for any real diligence or data-room request, not further public search.
+
+## Open Questions Remaining
+
+- Founding-year (2015/16/17) and employee-count conflicts unresolved against a primary source.
+- Exact revenue and revenue mix — directional estimates only; needs management data room.
+- NRR/churn, CAC/payback, customer concentration — not publicly available.
+- Full cap-table/preference-stack detail — confirmed not reconstructable from public filings; requires negotiated access.
 
 ## Sources
 

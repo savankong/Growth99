@@ -20,13 +20,16 @@ Catalog of every company/person/product/technology/trend/investor identified in 
 | Brenton Way | PENDING | LOW | Traditional marketing agency named as a top med spa marketing agency; represents the "agency" competitive front rather than point-solution CRM front. |
 | Rosemont Media / Etna Interactive | PENDING | LOW | Traditional agencies serving surgeon-led/larger practices; agency-front competitors, not yet profiled. |
 | Cardinal, Intrepy, Medstar, Influx, Studio 3 Marketing | PENDING | LOW | Additional named agency-front competitors from one listicle; not individually verified or profiled. |
+| **Symplast** | **RESEARCHED (pass 2)** | **CRITICAL** | [Companies/Symplast.md](Companies/Symplast.md) — top EMR bolt-on acquisition candidate for the exit-readiness plan. |
+| Meevo (Millennium Systems International) | RESEARCHED (pass 2, brief) | MED | Profiled inside Symplast.md as a deprioritized alternative — too large, existing PE co-owner (Serent Capital). |
+| Nextech | RESEARCHED (pass 2, brief) | LOW | Profiled inside Symplast.md as a deprioritized alternative — owned by TPG, too large/expensive to be a bolt-on. |
 
 ## People
 
 | Entity | Status | Value | File |
 |---|---|---|---|
 | Rob Pickell | RESEARCHED | CRITICAL | [People/Rob-Pickell.md](People/Rob-Pickell.md) |
-| Cameron Hemphill | RESEARCHED | HIGH | [People/Cameron-Hemphill.md](People/Cameron-Hemphill.md) |
+| Cameron Hemphill | RESEARCHED — status RESOLVED pass 2 | HIGH | [People/Cameron-Hemphill.md](People/Cameron-Hemphill.md) — now COO at Terri Ross Consulting (unrelated firm), clean exit confirmed. |
 | Aaron Gabbart | RESEARCHED | HIGH | [People/Aaron-Gabbart.md](People/Aaron-Gabbart.md) |
 | John DeBrincat (VP Marketing) | PENDING | LOW | Named in Oct 2024 press release; no further bio found yet. |
 | Ben Hahr (VP Product) | PENDING | LOW | Named in Oct 2024 press release; no further bio found yet. |

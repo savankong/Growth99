@@ -1,9 +1,9 @@
 # INDEX — Growth99 Competitive Intelligence Vault
 
 **Focus entity:** Growth99 (growth99.com) — med spa / aesthetics / elective wellness marketing automation platform
-**Angle:** Investment due diligence — financial/revenue quality, market position, product/technology, team/operations, and deal structure ahead of a potential investment alongside existing search-fund investors Pracinco and Trilogy Search Partners
-**Audience/purpose:** An investor deciding whether to invest, and on what terms, in Growth99's post-2024-recapitalization structure
-**Vault created:** 2026-08-16 · **Research pass:** 1 of N
+**Angle:** Started as buy-side investment diligence (pass 1); **reoriented in pass 2 to sell-side exit readiness** — what it takes to get Growth99 acquired by a PE firm within 12–24 months.
+**Audience/purpose:** Whoever is driving Growth99 toward a PE sale in the next 1–2 years — deciding what to fix, build, or prove before a buyer's process starts.
+**Vault created:** 2026-08-16 · **Research pass:** 2 of N
 
 Read this file top to bottom to reconstruct the full state of this research.
 
@@ -16,16 +16,16 @@ Read this file top to bottom to reconstruct the full state of this research.
 
 - **[SUMMARY.md](SUMMARY.md)** — the five things worth knowing immediately, gate status, and the pass-2 priority list. Read this first.
 - **[LANDSCAPE.md](LANDSCAPE.md)** — the synthesized narrative: the market, the two competitive fronts, Growth99's AI bet, and the ownership-structure risk that dominates this deal.
-- **[PE-ACQUISITION-THESIS.md](PE-ACQUISITION-THESIS.md)** — buyer-side working plan: BLUF, diligence priorities, ranked value-creation gaps, deal structure, and what kills the thesis. Analytical judgment, not new sourced research.
+- **[PE-ACQUISITION-THESIS.md](PE-ACQUISITION-THESIS.md)** — reoriented in pass 2 as a **sell-side exit-readiness plan**: BLUF, a 4-phase 12–24 month roadmap to get Growth99 acquired by a PE firm, and what could blow the timeline. Analytical judgment layered on researched facts.
 - **[ENTITIES.md](ENTITIES.md)** — full catalog of every entity in scope, tagged RESEARCHED / PENDING / SKIP, with links to profiles.
 
-## Companies (8 researched)
+## Companies (9 researched)
 
-[Growth99](Companies/Growth99.md) (focus) · [Boulevard](Companies/Boulevard.md) · [Mangomint](Companies/Mangomint.md) · [PatientNow](Companies/PatientNow.md) · [RepeatMD](Companies/RepeatMD.md) · [Vagaro](Companies/Vagaro.md) · [Tebra (PatientPop/Kareo)](Companies/Tebra-PatientPop.md) · [AestheticsPro](Companies/AestheticsPro.md)
+[Growth99](Companies/Growth99.md) (focus) · [Boulevard](Companies/Boulevard.md) · [Mangomint](Companies/Mangomint.md) · [PatientNow](Companies/PatientNow.md) · [RepeatMD](Companies/RepeatMD.md) · [Vagaro](Companies/Vagaro.md) · [Tebra (PatientPop/Kareo)](Companies/Tebra-PatientPop.md) · [AestheticsPro](Companies/AestheticsPro.md) · [Symplast](Companies/Symplast.md) (pass 2 — top EMR bolt-on candidate)
 
 ## People (3 researched)
 
-[Rob Pickell](People/Rob-Pickell.md) (CEO since Oct 2024) · [Cameron Hemphill](People/Cameron-Hemphill.md) (founder, former CEO — current status unconfirmed) · [Aaron Gabbart](People/Aaron-Gabbart.md) (Pracinco investor)
+[Rob Pickell](People/Rob-Pickell.md) (CEO since Oct 2024) · [Cameron Hemphill](People/Cameron-Hemphill.md) (founder — clean exit confirmed pass 2, now COO at Terri Ross Consulting) · [Aaron Gabbart](People/Aaron-Gabbart.md) (Pracinco investor)
 
 ## Products (3 researched)
 
@@ -46,8 +46,8 @@ Read this file top to bottom to reconstruct the full state of this research.
 ## Gate Status
 
 - Breadth gate (3+ per category): **MET**
-- Depth gate (every CRITICAL/HIGH entity RESEARCHED or SKIPped): **NOT YET MET** — several CRITICAL items (Growth99's CFO, Cameron Hemphill's current status, per-competitor AI verification) remain PENDING. See [SUMMARY.md](SUMMARY.md) for the pass-2 priority list.
+- Depth gate (every CRITICAL/HIGH entity RESEARCHED or SKIPped): **Improved in pass 2.** Cameron Hemphill's status is now RESOLVED. Still open: Growth99's CFO (unnamed in any public source), per-competitor AI-feature verification, and the still-unresolved SaaS-vs-services revenue split (confirmed unresolvable from public sources — flagged for internal data, not further search).
 
 ## Method Note
 
-All facts in this vault come from live web search/fetch conducted 2026-08-16, not training-data memory. Every link was fetched and verified to resolve during research. No URL, contact detail, or financial figure was invented — items with no public source are explicitly logged as unavailable rather than guessed. See individual files for confidence tags (HIGH/MED/CONFLICT) on each claim.
+All facts in this vault come from live web search/fetch conducted 2026-08-16 across two research passes, not training-data memory. Every link was fetched and verified to resolve during research. No URL, contact detail, or financial figure was invented — items with no public source are explicitly logged as unavailable rather than guessed. See individual files for confidence tags (HIGH/MED/CONFLICT) on each claim.

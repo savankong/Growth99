@@ -1,33 +1,33 @@
-# SUMMARY — Growth99 Competitive Intelligence (Pass 1)
+# SUMMARY — Growth99 Competitive Intelligence (Pass 2)
 
-**Audience:** An investor evaluating a potential investment in Growth99 alongside/after existing search-fund investors Pracinco and Trilogy Search Partners. **Purpose:** inform a go/no-go and deal-structure decision.
+**Audience:** Whoever is driving Growth99 toward a PE acquisition in the next 12–24 months. **Purpose:** know exactly what's fixed, what's still open, and what to do next to get there.
 
-**Research date:** 2026-08-16 · **Pass:** 1 of N (initial pass — report back before going deeper, per instructions)
+**Research date:** 2026-08-16 · **Pass:** 2 of N. Pass 1 was framed as buy-side diligence; **pass 2 reorients everything toward the sell-side goal** — see [PE-ACQUISITION-THESIS.md](PE-ACQUISITION-THESIS.md) for the full exit-readiness plan and roadmap. This file summarizes what changed and what's still open.
 
-## Five Things Worth Knowing Immediately
+## What Pass 2 Resolved
 
-1. **Growth99 is not founder-led anymore.** Founder Cameron Hemphill built it from a reputation-management tool into a 1,000+ practice marketing platform, but in October 2024 the company was recapitalized via a **search fund** acquisition — outside operator Rob Pickell (ex-Kareo/Kantata/HireRight CMO) came in as CEO, backed by a syndicate of at least six named investor entities. Hemphill's current relationship to the company is unconfirmed — this is the single highest-priority unanswered question from pass 1. → [People/Cameron-Hemphill.md](People/Cameron-Hemphill.md)
+1. **Cameron Hemphill's exit is confirmed clean.** He's now COO and Strategic Advisor at Terri Ross Consulting (announced March 24, 2026, primary press release) — a different, unrelated company. His own framing: Growth99 was "a successful exit to a private investor group." This was the single highest-priority open question after pass 1, and it resolves in the company's favor: no founder overhang, no ambiguous claim, one less thing a buyer's diligence team will flag. → [People/Cameron-Hemphill.md](People/Cameron-Hemphill.md)
 
-2. **The investor syndicate is more complex than "Pracinco and Trilogy."** Public sources also name Hunter Search Capital (which explicitly backed Pickell as the search-fund entrepreneur), Search Fund Partners, Relay Investments, Endurance Search Partners, and possibly Cambria Group. A cap table with 6+ distinct entities materially raises the odds of a genuinely layered preference stack — worth flagging before assuming Pracinco/Trilogy terms are the whole picture. → [Trends/Search-Fund-Roll-Up-Model.md](Trends/Search-Fund-Roll-Up-Model.md)
+2. **The cap table is confirmed opaque — and confirmed not fixable by more research.** SEC EDGAR full-text search for Form D filings under "Growth99," "Growth99 Holdings," and "Pracinco" all return zero hits. No public securities-offering trail exists for the 2024 recapitalization, consistent with a private M&A deal financed by the search funds' own capital rather than a new registered offering. Practical upshot: further public search won't close this gap — it needs to be fixed directly, by consolidating the 6–8 entity investor syndicate before a buyer's process starts. → [Companies/Growth99.md](Companies/Growth99.md)
 
-3. **Growth99 fights on two structurally different fronts, and research confirms both.** Point-solution CRMs/practice-management tools (Boulevard, Mangomint, PatientNow, RepeatMD, Vagaro, AestheticsPro, Tebra) generally out-execute Growth99 on clinical/EMR charting — a capability Growth99 appears to lack entirely — while Growth99 leads on top-of-funnel marketing (SEO, paid ads, lead gen) versus both those tools and traditional agencies. → [LANDSCAPE.md](LANDSCAPE.md)
+3. **Revenue is directionally estimated, not disclosed.** Two independent third-party estimators converge on roughly **$25–50M** (Growjo: $28.7M/180 employees; a separate aggregate: $25–50M/192 employees) — directional only, not a real disclosed figure. The actual SaaS-vs-services split remains genuinely unknown and unresolvable from public sources; it requires internal instrumentation, not more searching. → [Companies/Growth99.md](Companies/Growth99.md)
 
-4. **Gia (AI front desk) looks like a real differentiator, but it's unverified.** No competitor in this pass was found to publicly market a comparable AI-lead-response feature — but the search wasn't exhaustive per-competitor, and there is zero independent (non-Growth99) evidence yet that Gia measurably improves conversion or retention versus being early-stage marketing language. Both the "real moat" and "just marketing" hypotheses remain open. → [Products/Gia-AI-Front-Desk.md](Products/Gia-AI-Front-Desk.md)
+4. **A concrete, realistic EMR bolt-on target was identified: Symplast.** Self-funded, cosmetic-surgery/med-spa-specialty EMR, ~$8M ARR range, no competing institutional PE owner — the strongest structural candidate versus the alternatives considered (Meevo, backed by Serent Capital; Nextech, owned by TPG; both too large or too encumbered to be a clean bolt-on). No evidence Symplast is currently for sale — this is a proactive-outreach candidate, not a live deal. → [Companies/Symplast.md](Companies/Symplast.md)
 
-5. **All financial diligence questions the brief asked for are unanswered by design — not overlooked.** Revenue, revenue mix, NRR/churn, customer concentration, CAC/payback, and deal terms are not disclosed anywhere in public sources for this private company. Per the research method's explicit "never fabricate" instruction, these are logged as open items requiring direct engagement with Growth99 management/investors, not guessed at. → see "What This Pass Could Not Determine" in [LANDSCAPE.md](LANDSCAPE.md)
+## What This Means — the Roadmap
 
-## Gate Status (Pass 1)
+Full detail in [PE-ACQUISITION-THESIS.md](PE-ACQUISITION-THESIS.md). In short: a 4-phase, 12–24 month plan — (1) make the financials and cap table buyer-legible, (2) close the EMR gap via Symplast and get real data on Gia's impact, (3) build the equity story and engage the market, (4) run a competitive process. The BLUF is at the top of that document and at the top of the published dossier.
 
-- **Breadth gate** (3+ entities researched per category): **MET.** Companies: 8. People: 3. Products: 3. Technologies: 3. Trends: 3. Investors: 3.
-- **Depth gate** (every CRITICAL/HIGH entity RESEARCHED or SKIPped with reason): **NOT YET MET.** No entities are formally SKIPped, but several CRITICAL/HIGH items are still PENDING rather than RESEARCHED — see the priority list below. This pass intentionally stopped here to report back before going deeper, per the task instructions.
+## Still Open (unresolved by pass 2)
 
-## Highest-Priority Items for Pass 2
+- Growth99's **CFO** — still unnamed in any public source; needed for the Phase 1 financial-instrumentation work regardless of a sale process.
+- **Per-competitor AI-feature verification** — is Gia really unmatched, or did this pass just not find competitors' AI features? Still not exhaustively checked.
+- **Founding-year** (2015/16/17) and **employee-count** (180/192/271, now three-way conflicting) — still unresolved against a primary source.
+- **Agency-front competitors** (Rosemont Media, Etna Interactive, Brenton Way, etc.) — still only named, not profiled.
 
-1. Identify and profile Growth99's **CFO** — the brief explicitly asks for a CFO reference call; no name found yet.
-2. Resolve **Cameron Hemphill's current status** at Growth99 (advisor / board / fully exited).
-3. Run a **dedicated per-competitor AI-feature search** (7 competitors) to confirm or disprove Gia's moat.
-4. Verify **Search Fund Partners, Relay Investments, Endurance Search Partners, and Cambria Group** as investors independently (currently sourced mainly from one aggregator each).
-5. Deep-profile the **agency-front competitors** (Rosemont Media, Etna Interactive, Brenton Way, etc.) — currently only named, not researched.
-6. Attempt to reconcile the **founding-year conflict** (2015/2016/2017) and **employee-count conflict** (192 vs. 271) against a primary source.
+## Gate Status
+
+- **Breadth gate** (3+ entities researched per category): **MET.** Companies: 9. People: 3. Products: 3. Technologies: 3. Trends: 3. Investors: 3.
+- **Depth gate:** improved — Hemphill resolved. CFO and per-competitor AI verification remain the two open CRITICAL/HIGH items.
 
 Full detail in [ENTITIES.md](ENTITIES.md) and [LANDSCAPE.md](LANDSCAPE.md). Start at [INDEX.md](INDEX.md) to navigate the full vault.
