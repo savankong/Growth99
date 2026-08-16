@@ -16,7 +16,7 @@ Read this file top to bottom to reconstruct the full state of this research.
 
 - **[SUMMARY.md](SUMMARY.md)** — the five things worth knowing immediately, gate status, and the pass-2 priority list. Read this first.
 - **[LANDSCAPE.md](LANDSCAPE.md)** — the synthesized narrative: the market, the two competitive fronts, Growth99's AI bet, and the ownership-structure risk that dominates this deal.
-- **[PE-ACQUISITION-THESIS.md](PE-ACQUISITION-THESIS.md)** — reoriented in pass 2 as a **sell-side exit-readiness plan**: BLUF, a 4-phase 12–24 month roadmap to get Growth99 acquired by a PE firm, and what could blow the timeline. Analytical judgment layered on researched facts.
+- **[PE-ACQUISITION-THESIS.md](PE-ACQUISITION-THESIS.md)** — sell-side exit-readiness plan, refined in pass 3: BLUF, a concrete foundational-metrics profile (mid-teens growth, >75% gross margin, 10–15% EBITDA margin, solid sales economics, reasonable SMB churn/NRR), a 4-phase 12–24 month roadmap targeting a growth equity investment, and what could blow the timeline. Analytical judgment layered on researched facts.
 - **[ENTITIES.md](ENTITIES.md)** — full catalog of every entity in scope, tagged RESEARCHED / PENDING / SKIP, with links to profiles.
 
 ## Companies (9 researched)
