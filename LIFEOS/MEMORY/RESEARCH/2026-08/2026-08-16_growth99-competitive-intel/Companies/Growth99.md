@@ -31,7 +31,8 @@
 ## Legal Entity & Cap Table (pass 2)
 
 - Legal entity name: **Growth99 Holdings LLC**, per a business-data aggregator. Not independently confirmed against a state registry — direct OpenCorporates and Utah state-registry queries returned 403/blocked responses in this pass. [MED, single-source] — [aggregate business-data search]
-- **SEC EDGAR full-text search for Form D filings under "Growth99," "Growth99 Holdings," and "Pracinco" all returned zero hits.** No public securities-offering trail exists for the 2024 recapitalization. This is consistent with — not contradictory to — the deal being a private M&A stock/asset purchase financed directly by the search-fund investors' own committed capital vehicles (their funds, not a new registered offering under Growth99's name), which is standard search-fund acquisition mechanics. Practical conclusion: **the cap table is not reconstructable from public filings** — full preference-stack and governance detail requires negotiated access, not further public search. [HIGH — confirms the absence; MED on the interpretation of why]
+- **SEC EDGAR full-text search for Form D filings under "Growth99," "Growth99 Holdings," and "Pracinco" all returned zero hits.** No public securities-offering trail exists for the 2024 recapitalization. This is consistent with — not contradictory to — the deal being a private M&A stock purchase financed directly by the search-fund investors' own committed capital vehicles (their funds, not a new registered offering under Growth99's name), which is standard search-fund acquisition mechanics. [HIGH — confirms the absence; MED on the interpretation of why]
+- **The cap table structure itself is understood to be simple**, not the layered multi-tranche stack the entity count alone might suggest: a single class of preferred stock across all search-fund investors at the same price and terms, a small common pool held by a few individuals, and incentive units reserved for leadership. This is a working-plan-level characterization rather than a public-source-verified claim (no independent public filing confirms preferred-share terms for a private company like this) — see [PE-ACQUISITION-THESIS.md](../PE-ACQUISITION-THESIS.md) for how this shapes the exit-readiness roadmap. [N/A — not a public-source claim]
 - Investor count: one aggregator states **8 total investors** (vs. the 6 named entities identified in pass 1 plus one unconfirmed) — consistent order of magnitude, doesn't newly name the remaining 1–2. [MED]
 
 ## Revenue Estimate (pass 2 — directional only, not disclosed)
@@ -46,7 +47,7 @@
 - Founding-year (2015/16/17) and employee-count conflicts unresolved against a primary source.
 - Exact revenue and revenue mix — directional estimates only; needs management data room.
 - NRR/churn, CAC/payback, customer concentration — not publicly available.
-- Full cap-table/preference-stack detail — confirmed not reconstructable from public filings; requires negotiated access.
+- Full cap-table/preference-stack detail is not reconstructable from public filings (confirmed via SEC search) — but the working understanding is that the structure itself is simple; see the cap-table note above and [PE-ACQUISITION-THESIS.md](../PE-ACQUISITION-THESIS.md).
 
 ## Sources
 

@@ -8,7 +8,7 @@
 
 1. **Cameron Hemphill's exit is confirmed clean.** He's now COO and Strategic Advisor at Terri Ross Consulting (announced March 24, 2026, primary press release) — a different, unrelated company. His own framing: Growth99 was "a successful exit to a private investor group." This was the single highest-priority open question after pass 1, and it resolves in the company's favor: no founder overhang, no ambiguous claim, one less thing a buyer's diligence team will flag. → [People/Cameron-Hemphill.md](People/Cameron-Hemphill.md)
 
-2. **The cap table is confirmed opaque — and confirmed not fixable by more research.** SEC EDGAR full-text search for Form D filings under "Growth99," "Growth99 Holdings," and "Pracinco" all return zero hits. No public securities-offering trail exists for the 2024 recapitalization, consistent with a private M&A deal financed by the search funds' own capital rather than a new registered offering. Practical upshot: further public search won't close this gap — it needs to be fixed directly, by consolidating the 6–8 entity investor syndicate before a buyer's process starts. → [Companies/Growth99.md](Companies/Growth99.md)
+2. **The cap table is clean — and not a workstream.** SEC EDGAR full-text search for Form D filings under "Growth99," "Growth99 Holdings," and "Pracinco" all return zero hits, consistent with a private M&A deal rather than a registered offering. More importantly, the structure itself is simple: a single class of preferred stock across all search-fund investors at the same price and terms, a small common pool, and leadership incentive units — no layered stack, no competing protective provisions. Board approval for a transaction is expected to be a formality. This removes what had looked like the plan's second-biggest risk. → [Companies/Growth99.md](Companies/Growth99.md)
 
 3. **Revenue is directionally estimated, not disclosed.** Two independent third-party estimators converge on roughly **$25–50M** (Growjo: $28.7M/180 employees; a separate aggregate: $25–50M/192 employees) — directional only, not a real disclosed figure. The actual SaaS-vs-services split remains genuinely unknown and unresolvable from public sources; it requires internal instrumentation, not more searching. → [Companies/Growth99.md](Companies/Growth99.md)
 
@@ -16,7 +16,7 @@
 
 ## What This Means — the Roadmap
 
-Full detail in [PE-ACQUISITION-THESIS.md](PE-ACQUISITION-THESIS.md). In short: a 4-phase, 12–24 month plan — (1) make the financials and cap table buyer-legible, (2) close the EMR gap via Symplast and get real data on Gia's impact, (3) build the equity story and engage the market, (4) run a competitive process. The BLUF is at the top of that document and at the top of the published dossier.
+Full detail in [PE-ACQUISITION-THESIS.md](PE-ACQUISITION-THESIS.md), which also lays out a foundational metrics profile (mid-teens growth, >75% gross margin, 10–15% EBITDA margin, solid sales economics, reasonable SMB churn/NRR) as the bridge between execution and story. In short: a 4-phase, 12–24 month plan — (1) move the financials to the target profile (cap table needs no work), (2) close the EMR gap via Symplast and get real data on Gia's impact, (3) build the equity story and engage the market, (4) run a competitive process. The BLUF is at the top of that document and at the top of the published dossier.
 
 ## Still Open (unresolved by pass 2)
 
