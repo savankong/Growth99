@@ -1,8 +1,10 @@
 # Symplast
 
 **Status:** RESEARCHED
-**Category:** Company — EMR Bolt-On Acquisition Candidate
-**Value:** CRITICAL (for the exit-readiness thesis, not as a Growth99 competitor per se)
+**Category:** Company — Clinical Software (EMR/EHR) Acquisition Candidate
+**Value:** MED (deprioritized pass 4 — see note below; retained as background research, not an active near-term initiative)
+
+**Pass 4 note:** the exit-readiness plan ([PE-ACQUISITION-THESIS.md](../PE-ACQUISITION-THESIS.md)) no longer treats acquiring Symplast, or any clinical-charting company, as a near-term priority — the current path forward addresses the clinical-charting gap through partnership/integration rather than acquisition, to avoid the integration risk and margin drag of M&A during the metrics-bar-building window. This profile is retained because Symplast remains a reasonable candidate for later consideration, once there is dedicated capital and bandwidth for it.
 
 ## Overview
 

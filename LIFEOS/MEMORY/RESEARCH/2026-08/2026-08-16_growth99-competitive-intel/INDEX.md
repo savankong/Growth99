@@ -16,12 +16,12 @@ Read this file top to bottom to reconstruct the full state of this research.
 
 - **[SUMMARY.md](SUMMARY.md)** — the five things worth knowing immediately, gate status, and the pass-2 priority list. Read this first.
 - **[LANDSCAPE.md](LANDSCAPE.md)** — the synthesized narrative: the market, the two competitive fronts, Growth99's AI bet, and the ownership-structure risk that dominates this deal.
-- **[PE-ACQUISITION-THESIS.md](PE-ACQUISITION-THESIS.md)** — sell-side exit-readiness plan, refined in pass 3: BLUF, a concrete foundational-metrics profile (mid-teens growth, >75% gross margin, 10–15% EBITDA margin, solid sales economics, reasonable SMB churn/NRR), a 4-phase 12–24 month roadmap targeting a growth equity investment, and what could blow the timeline. Analytical judgment layered on researched facts.
+- **[PE-ACQUISITION-THESIS.md](PE-ACQUISITION-THESIS.md)** — sell-side exit-readiness plan, expanded in pass 4: a spelled-out metrics bar (revenue growth, customer acquisition cost, gross margin, EBITDA margin, net revenue retention/churn — all defined in plain language), an organic path forward that deliberately excludes a near-term clinical-software (EMR/EHR) acquisition, a detailed sequencing plan, and an expanded set of real tensions/challenges. Analytical judgment layered on researched facts.
 - **[ENTITIES.md](ENTITIES.md)** — full catalog of every entity in scope, tagged RESEARCHED / PENDING / SKIP, with links to profiles.
 
 ## Companies (9 researched)
 
-[Growth99](Companies/Growth99.md) (focus) · [Boulevard](Companies/Boulevard.md) · [Mangomint](Companies/Mangomint.md) · [PatientNow](Companies/PatientNow.md) · [RepeatMD](Companies/RepeatMD.md) · [Vagaro](Companies/Vagaro.md) · [Tebra (PatientPop/Kareo)](Companies/Tebra-PatientPop.md) · [AestheticsPro](Companies/AestheticsPro.md) · [Symplast](Companies/Symplast.md) (pass 2 — top EMR bolt-on candidate)
+[Growth99](Companies/Growth99.md) (focus) · [Boulevard](Companies/Boulevard.md) · [Mangomint](Companies/Mangomint.md) · [PatientNow](Companies/PatientNow.md) · [RepeatMD](Companies/RepeatMD.md) · [Vagaro](Companies/Vagaro.md) · [Tebra (PatientPop/Kareo)](Companies/Tebra-PatientPop.md) · [AestheticsPro](Companies/AestheticsPro.md) · [Symplast](Companies/Symplast.md) (background research — deprioritized as a near-term initiative, pass 4)
 
 ## People (3 researched)
 

@@ -20,7 +20,7 @@ Catalog of every company/person/product/technology/trend/investor identified in 
 | Brenton Way | PENDING | LOW | Traditional marketing agency named as a top med spa marketing agency; represents the "agency" competitive front rather than point-solution CRM front. |
 | Rosemont Media / Etna Interactive | PENDING | LOW | Traditional agencies serving surgeon-led/larger practices; agency-front competitors, not yet profiled. |
 | Cardinal, Intrepy, Medstar, Influx, Studio 3 Marketing | PENDING | LOW | Additional named agency-front competitors from one listicle; not individually verified or profiled. |
-| **Symplast** | **RESEARCHED (pass 2)** | **CRITICAL** | [Companies/Symplast.md](Companies/Symplast.md) — top EMR bolt-on acquisition candidate for the exit-readiness plan. |
+| Symplast | RESEARCHED (pass 2, deprioritized pass 4) | MED | [Companies/Symplast.md](Companies/Symplast.md) — retained as background research; no longer an active near-term initiative in the exit-readiness plan. |
 | Meevo (Millennium Systems International) | RESEARCHED (pass 2, brief) | MED | Profiled inside Symplast.md as a deprioritized alternative — too large, existing PE co-owner (Serent Capital). |
 | Nextech | RESEARCHED (pass 2, brief) | LOW | Profiled inside Symplast.md as a deprioritized alternative — owned by TPG, too large/expensive to be a bolt-on. |
 
