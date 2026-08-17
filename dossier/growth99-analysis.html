@@ -141,6 +141,12 @@
   }
   .cover-meta div { display: flex; flex-direction: column; gap: 0.15rem; }
   .cover-meta dt { color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.68rem; }
+  .cover-meta dt a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--ink-faint);
+  }
+  .cover-meta dt a:hover { color: var(--accent-deep); border-bottom-color: var(--accent-deep); }
   .cover-meta dd { margin: 0; color: var(--ink); }
   .cover-meta .gate-pass { color: var(--good); font-weight: 600; }
   .cover-meta .gate-partial { color: var(--warn); font-weight: 600; }
@@ -398,12 +404,12 @@
     <h1>Growth99 Analysis</h1>
     <p class="dek">A 12–24 month plan to get Growth99, the med-spa marketing-automation platform recapitalized in October 2024 by a search-fund syndicate led by Pracinco and Trilogy Search Partners, acquired by a PE firm — plus the full competitive and ownership research behind it.</p>
     <dl class="cover-meta">
-      <div><dt>Opened</dt><dd>2026-08-16</dd></div>
-      <div><dt>Entities researched</dt><dd>22 of 36 identified</dd></div>
-      <div><dt>Breadth gate</dt><dd class="gate-pass">PASS — 3+ per category</dd></div>
-      <div><dt>Depth gate</dt><dd class="gate-partial">IMPROVED — see Open Questions</dd></div>
-      <div><dt>Focus entity</dt><dd>Growth99 (growth99.com)</dd></div>
-      <div><dt>Method</dt><dd>Live web research, 2 passes</dd></div>
+      <div><dt><a href="#glossary-opened">Opened</a></dt><dd>2026-08-16</dd></div>
+      <div><dt><a href="#glossary-entities-researched">Entities researched</a></dt><dd>22 of 36 identified</dd></div>
+      <div><dt><a href="#glossary-breadth-gate">Breadth gate</a></dt><dd class="gate-pass">PASS — 3+ per category</dd></div>
+      <div><dt><a href="#glossary-depth-gate">Depth gate</a></dt><dd class="gate-partial">IMPROVED — see Open Questions</dd></div>
+      <div><dt><a href="#glossary-focus-entity">Focus entity</a></dt><dd>Growth99 (growth99.com)</dd></div>
+      <div><dt><a href="#glossary-method">Method</a></dt><dd>Live web research, 2 passes</dd></div>
     </dl>
   </div>
 </div>
@@ -938,6 +944,35 @@
     <section id="method">
       <h2 class="section-title">Method &amp; Sourcing</h2>
       <p>All facts in this dossier come from live web search and fetch across two research passes (2026-08-16), not training-data memory. Every link was fetched and verified to resolve during research. No URL, contact detail, or financial figure was invented — items with no public source are logged as unavailable rather than guessed. Confidence tags (<span class="chip chip-high">HIGH</span> primary source, <span class="chip chip-med">MED</span> secondary/aggregator, <span class="chip chip-conflict">CONFLICT</span> sources disagree) appear next to non-obvious claims throughout.</p>
+
+      <h4>Glossary — the cover strip, explained</h4>
+      <p class="section-sub" style="margin-top:0.4rem;">What each field at the top of this page means, linked from there back to here.</p>
+      <div class="grid-2" style="margin-top:1rem;">
+        <article class="card" id="glossary-opened" style="scroll-margin-top:1.5rem;">
+          <div class="card-head"><h3 class="entry-title" style="font-size:1rem;">Opened</h3></div>
+          <p>The date this research vault was created and live research began. Later revisions (this dossier is now on revision 4) update the content but not this original open date.</p>
+        </article>
+        <article class="card" id="glossary-entities-researched" style="scroll-margin-top:1.5rem;">
+          <div class="card-head"><h3 class="entry-title" style="font-size:1rem;">Entities researched</h3></div>
+          <p>Every company, person, product, technology, trend, and investor identified during research is logged in the vault's entity catalog with a status — RESEARCHED (has a full sourced profile), PENDING (identified but not yet profiled), or SKIP (deliberately excluded, with a reason). This count is RESEARCHED entities over the total identified across all categories.</p>
+        </article>
+        <article class="card" id="glossary-breadth-gate" style="scroll-margin-top:1.5rem;">
+          <div class="card-head"><h3 class="entry-title" style="font-size:1rem;">Breadth gate</h3></div>
+          <p>One of two quality checks from the research method. PASS means every category — companies, people, products, technologies, trends, investors — has at least three fully researched entities, so the landscape is covered broadly before any one thread gets over-indexed.</p>
+        </article>
+        <article class="card" id="glossary-depth-gate" style="scroll-margin-top:1.5rem;">
+          <div class="card-head"><h3 class="entry-title" style="font-size:1rem;">Depth gate</h3></div>
+          <p>The second quality check: whether every entity flagged CRITICAL or HIGH value is either fully researched or explicitly skipped with a stated reason. "IMPROVED" means real progress across revisions (Cameron Hemphill's status, the cap table, and others resolved) without every single item being closed out yet — see <a href="#open-questions">Open Questions</a> for what's left.</p>
+        </article>
+        <article class="card" id="glossary-focus-entity" style="scroll-margin-top:1.5rem;">
+          <div class="card-head"><h3 class="entry-title" style="font-size:1rem;">Focus entity</h3></div>
+          <p>The single company this entire vault is organized around. Every competitor, person, product, and trend profiled elsewhere in this dossier is researched in relation to how it affects or competes with this one entity.</p>
+        </article>
+        <article class="card" id="glossary-method" style="scroll-margin-top:1.5rem;">
+          <div class="card-head"><h3 class="entry-title" style="font-size:1rem;">Method</h3></div>
+          <p>How many rounds of live web research produced the sourced facts in this dossier, as distinct from the strategic/analytical revisions layered on top afterward (this page is on its 4th content revision, but its 2nd round of new live web research — later revisions refined and reoriented the analysis rather than adding new public-source research).</p>
+        </article>
+      </div>
       <div class="callout open-question">
         <strong>Revision 4 of N.</strong> Pass 1 was framed as buyer-side diligence; pass 2 reoriented the whole dossier toward the sell-side goal of a growth equity investment within 12–24 months; pass 3 added a metrics bar and resolved the cap table as a clean, non-issue structure; pass 4 substantially expanded the exit-readiness plan and removed a near-term clinical-software acquisition from the path forward, replacing it with an organic set of levers (see <a href="#pe-thesis">Exit Readiness Plan</a>). Resolved across these passes: Cameron Hemphill's status and the cap table's clean single-class structure. Deprioritized: the Symplast acquisition, retained only as background research. Still open: Growth99's CFO, per-competitor AI-feature verification, and the agency-front competitors (Rosemont Media, Etna Interactive, Brenton Way, and others) remain unprofiled.
       </div>
