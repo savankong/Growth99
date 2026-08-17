@@ -17,6 +17,7 @@ Read this file top to bottom to reconstruct the full state of this research.
 - **[SUMMARY.md](SUMMARY.md)** — the five things worth knowing immediately, gate status, and the pass-2 priority list. Read this first.
 - **[LANDSCAPE.md](LANDSCAPE.md)** — the synthesized narrative: the market, the two competitive fronts, Growth99's AI bet, and the ownership-structure risk that dominates this deal.
 - **[PE-ACQUISITION-THESIS.md](PE-ACQUISITION-THESIS.md)** — sell-side exit-readiness plan, expanded in pass 4: a spelled-out metrics bar (revenue growth, customer acquisition cost, gross margin, EBITDA margin, net revenue retention/churn — all defined in plain language), an organic path forward that deliberately excludes a near-term clinical-software (EMR/EHR) acquisition, a detailed sequencing plan, and an expanded set of real tensions/challenges. Analytical judgment layered on researched facts.
+- **[FINANCIAL-METRICS-FRAMEWORK.md](FINANCIAL-METRICS-FRAMEWORK.md)** — added pass 5: the fuller set of financial/operating metrics behind the five headline targets — growth and revenue, retention and churn, unit economics, margin and profitability, customer health, cash, and services-specific operational metrics — every acronym defined.
 - **[ENTITIES.md](ENTITIES.md)** — full catalog of every entity in scope, tagged RESEARCHED / PENDING / SKIP, with links to profiles.
 
 ## Companies (9 researched)
